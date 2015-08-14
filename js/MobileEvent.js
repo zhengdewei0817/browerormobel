@@ -13,16 +13,22 @@
 			})
 		 * 
 		 */
-		zdw_addEvent:function(_MouseEvent,_EventFunction){
+		zdw_addEvent:function(_MouseEvent,_EventFunction,_false){
+			if(_false==null||_false==undefined){
+				_false = false;
+			}
 			var CurDom = this;
 			var ME;//保存事件类型
 			
 			var isSupport = $.isSupportMobile();//判断是否为移动端浏览器
-			
+			//alert(isSupport)
 			addEventName();
 			var FN = function(event){
 				var e = event|| window.event;
-				stopDefault(e);
+				if(!_false){
+					stopDefault(e);
+				}
+				
 
 				switch (ME){
 					case "touchstart":
